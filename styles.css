@@ -1,0 +1,23 @@
+/* Fuente general para toda la página  */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Barra azul*/
+.navbar-azul {
+    background-color: #0033cc;
+}
+
+.btn-login {
+    color: #0033cc;
+} 
+
+.btn-login:hover {
+    background-color: #e6e6e6;
+    color: #001a66;
+}
+
+/* Footer azul */
+.footer-azul {
+    background-color: #0033cc; 
+    }
