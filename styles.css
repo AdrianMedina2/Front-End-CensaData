@@ -1,23 +1,98 @@
+/* Orden estrutural */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 /* Fuente general para toda la página  */
 body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Barra azul*/
-.navbar-azul {
-    background-color: #0033cc;
+/* Definición de colores corporativos */
+:root {
+    --color-brand: #0033cc;
+    --color-brand-hover: #002299;
 }
 
-.btn-login {
-    color: #0033cc;
-} 
-
-.btn-login:hover {
-    background-color: #e6e6e6;
-    color: #001a66;
+/* Color de texto */
+.color-brand {
+    color: var(--color-brand);
 }
 
-/* Footer azul */
-.footer-azul {
-    background-color: #0033cc; 
-    }
+/* Color de fondo */
+.bg-brand {
+    background-color: var(--color-brand);
+}
+
+/* Botón de marca azul*/
+.btn-brand {
+    background-color: var(--color-brand);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover de botón de marca azul */
+.btn-brand:hover {
+    background-color: var(--color-brand-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de marca blanco */
+.btn-brand-light {
+    background-color: #fff;
+    color: var(--color-brand);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover botón de marca blanco */
+.btn-brand-light:hover {
+    background-color: #d4d3d3;
+    color: var(--color-brand);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Línea animada debajo del link de navbar*/
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Hover de los links de la navbar */
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.img {
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url("img/image.png") no-repeat center center;
+    background-size: cover;
+    color: white;
+    /* texto en blanco para contraste */
+    padding: 100px 20px;
+    /* espacio interno */
+}
