@@ -11,6 +11,8 @@
     <!-- Fuente Poppins desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- Iconos boostrap     -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Estilos Propios -->
     <link href="../css/styles.css" rel="stylesheet">
 </head>
@@ -19,7 +21,10 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-brand py-3 px-5">
         <div class="container-fluid">
-            <a class="navbar-brand text-white fw-bold fs-3" href="../index.html">CensaData</a>
+            <a class="navbar-brand text-white fs-3" href="#">
+                <i class="bi bi-clipboard-check me-2"></i>
+                <span class="fw-bold">Censa</span>Data
+            </a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,22 +42,61 @@
     <!-- Contenido principal -->
     <main class="container my-5">
         <h2 class="fw-bold color-brand mb-4">Acerca de nosotros</h2>
+
         <!-- Video embebido -->
         <div class="ratio ratio-16x9 my-4">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID" 
-                    title="Video institucional CensaData"
-                    allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video institucional CensaData"
+                allowfullscreen></iframe>
         </div>
-        <p class="lead">    
+
+        <!-- Descripción general -->
+        <p class="lead">
             CensaData es un sistema diseñado para apoyar la gestión y análisis de datos en instituciones educativas y de
             investigación.
             Nuestro objetivo es ofrecer herramientas confiables, seguras y fáciles de usar para investigadores y
             administradores.
         </p>
         <p>
-            Ofrece soporte para las instituciones MINED e INIDE, las cuales los diferentes procesos de censado de manera segura y transparente.
+            Ofrece soporte para las instituciones MINED e INIDE, garantizando procesos de censado seguros y
+            transparentes.
+        </p>
+
+        <!-- Misión y visión -->
+        <div class="row my-5">
+            <div class="col-md-6">
+                <h4 class="fw-bold color-brand">Misión</h4>
+                <p>CensaData busca fortalecer la gestión de censos educativos e institucionales mediante herramientas
+                    seguras y accesibles.</p>
+            </div>
+            <div class="col-md-6">
+                <h4 class="fw-bold color-brand">Visión</h4>
+                <p>Convertirse en la plataforma de referencia para el análisis de datos censales en Nicaragua,
+                    promoviendo transparencia y eficiencia.</p>
+            </div>
+        </div>
+
+        <!-- Valores -->
+        <h4 class="fw-bold mt-4 color-brand">Nuestros valores</h4>
+        <ul class="list-unstyled">
+            <li><i class="bi bi-shield-lock color-brand me-2"></i> Seguridad y confianza</li>
+            <li><i class="bi bi-people color-brand me-2"></i> Transparencia y colaboración</li>
+            <li><i class="bi bi-lightbulb color-brand me-2"></i> Innovación constante</li>
+        </ul>
+
+        <!-- Instituciones aliadas -->
+        <h4 class="fw-bold mt-4 color-brand">Instituciones aliadas</h4>
+        <p>Diseñamos el sistema para las instituciones <strong>MINED</strong> y el <strong>INIDE</strong> para garantizar procesos censales
+            confiables y transparentes.</p>
+
+        <!-- Contacto -->
+        <h4 class="fw-bold mt-4 color-brand">Contáctanos</h4>
+        <p>
+            📍 Managua, Nicaragua<br>
+            📞 +505 2222-3333<br>
+            ✉️ info@censadata.com
         </p>
     </main>
+
 
     <!-- Footer -->
     <footer class="bg-brand text-white text-center content-center py-3 mt-5">
