@@ -33,12 +33,23 @@
                 <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="../index.html">Inicio</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="acerca.html">Acerca de nosotros</a>
-                    <a href="login.html" class="btn btn-brand-light fw-bold rounded-pill">Iniciar sesión</a>
+                    <a href="#" class="btn btn-brand-light fw-bold rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Iniciar sesión</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Modal login flotante -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- modificar el estilo del modal para que sea transparente y sin bordes -->
+            <div class="modal-content border-0 shadow-none bg-transparent p-0" id="loginModalContent">
+                <!-- Aquí se carga el login con javascript -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Contenido principal -->
     <main class="container my-5">
         <h2 class="fw-bold color-brand mb-4">Acerca de nosotros</h2>
@@ -85,7 +96,8 @@
 
         <!-- Instituciones aliadas -->
         <h4 class="fw-bold mt-4 color-brand">Instituciones aliadas</h4>
-        <p>Diseñamos el sistema para las instituciones <strong>MINED</strong> y el <strong>INIDE</strong> para garantizar procesos censales
+        <p>Diseñamos el sistema para las instituciones <strong>MINED</strong> y el <strong>INIDE</strong> para
+            garantizar procesos censales
             confiables y transparentes.</p>
 
         <!-- Contacto -->
@@ -109,7 +121,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Scripts Propios -->
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

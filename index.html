@@ -34,18 +34,28 @@
                 <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="index.html">Inicio</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/acerca.html">Acerca de nosotros</a>
-                    <a href="pages/login.html" class="btn btn-brand-light fw-bold rounded-pill">Iniciar sesión</a>
+                    <a href="#" class="btn btn-brand-light fw-bold rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Iniciar sesión</a>
                 </div>
             </div>
         </div>
     </nav>
-
+    <!-- Modal login flotante -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- modificar el estilo del modal para que sea transparente y sin bordes -->
+            <div class="modal-content border-0 shadow-none bg-transparent p-0" id="loginModalContent">
+                <!-- Aquí se carga el login con javascript -->
+            </div>
+        </div>
+    </div>
     <!-- Contenido principal -->
     <main class="container mt-5 text-center">
         <div class="img">
             <h1 class="color-brand display-4">Bienvenido a CensaData</h1>
             <p class="lead text-black">Sistema para gestión y análisis de datos educativos e institucionales.</p>
-            <a href="pages/login.html" class="btn btn-brand text-white fw-bold rounded-pill mb-4 mt-3">Comenzar</a>
+            <a href="#" class="btn btn-brand text-white fw-bold rounded-pill mb-4 mt-3" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Comenzar</a>
         </div>
         <hr>
         <h2 class="fw-bold color-brand mt-5 mb-4">Beneficios</h2>
@@ -76,7 +86,8 @@
     <section class="bg-light py-5">
         <div class="container text-center">
             <h2 class="color-brand fw-bold mb-4">Instituciones aliadas</h2>
-            <p class="fw-bold">Trabajamos junto al MINED e INIDE para garantizar procesos censales confiables y transparentes.</p>
+            <p class="fw-bold">Trabajamos junto al MINED e INIDE para garantizar procesos censales confiables y
+                transparentes.</p>
             <div class="row mt-5">
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 shadow-sm">
