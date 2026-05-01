@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CensaData | Sistema de Gestión y Análisis de Datos.</title>
-    <link rel="icon" type="image/png" href="img/inidelogo.ico">
+    <link rel="icon" type="image/png" href="img/Censadata.ico">
     <!-- Boostrap CSS desde CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -54,7 +54,7 @@
     <main class="container mt-5 text-center">
         <div class="img">
             <h1 class="color-brand display-4">Bienvenido a CensaData</h1>
-            <p class="lead text-black">Sistema para gestión y análisis de datos dirigida al INIDE.</p>
+            <p class="lead text-black">Sistema para gestión y análisis de datos dirigida al INIDE y MINED.</p>
             <a href="#" class="btn btn-brand text-white fw-bold rounded-pill mb-4 mt-3" data-bs-toggle="modal"
                 data-bs-target="#loginModal">Comenzar</a>
         </div>
@@ -83,28 +83,49 @@
             </div>
         </div>
         <hr>
-        <!-- Institución aliada -->
+        <!-- Instituciones aliadas -->
         <section class="bg-white py-5">
             <div class="container text-center">
-                <h2 class="color-brand fw-bold mb-4">Institución aliada</h2>
+                <h2 class="color-brand fw-bold mb-4">Instituciones aliadas</h2>
                 <div class="row mt-5">
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100 border-0 shadow-sm">
+
+                    <!-- INIDE -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm hover-lift">
                             <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                <img src="./img/inidelogo.png" alt="Logo INIDE" class="mb-3" style="width: 200px;">
-                                <p class="card-text"> <span class="fw-bold">Instituto Nacional de Información de
-                                        Desarrollo</span>, organismo rector
-                                    de las estadísticas oficiales en Nicaragua.
+                                <img src="./img/inidelogo.png" alt="Logo INIDE" class="mb-3" style="width: 150px;">
+                                <p class="card-text">
+                                    <span class="fw-bold">Instituto Nacional de Información de Desarrollo
+                                        (INIDE)</span>, organismo rector de las estadísticas oficiales en Nicaragua.
                                     Responsable de censos nacionales, encuestas socioeconómicas y publicaciones que
-                                    sirven de base para políticas públicas.</p>
-                                <a href="https://www.inide.gob.ni" class="btn btn-brand-light fw-bold mt-3">Visitar
+                                    sirven de base para políticas públicas.
+                                </p>
+                                <a href="https://www.inide.gob.ni" class="btn btn-brand-light fw-bold mt-1">Visitar
                                     sitio</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- MINED -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm hover-lift">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                <img src="./img/minedlogo.png" alt="Logo MINED" class="mb-3" style="width: 160px;">
+                                <p class="card-text">
+                                    <span class="fw-bold">Ministerio de Educación (MINED)</span>, institución encargada
+                                    de la gestión educativa nacional. Colabora en procesos censales y en la
+                                    planificación de políticas públicas para fortalecer el sistema educativo.
+                                </p>
+                                <a href="https://www.mined.gob.ni" class="btn btn-brand-light fw-bold mt-5">Visitar
+                                    sitio</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
@@ -117,9 +138,9 @@
                         <i class="bi bi-clipboard-check me-2"></i> CensaData
                     </h4>
                     <p class="small">
-                        Sistema diseñado para apoyar la gestión y análisis de datos censales del INIDE. Ofreciendo herramientas confiables, seguras y fáciles de usar para investigadores
-                        y
-                        administradores.
+                        Sistema diseñado para apoyar la gestión y análisis de datos censales del INIDE y MINED.
+                        Ofreciendo
+                        herramientas confiables, seguras y fáciles de usar para investigadores y administradores.
                     </p>
                     <a href="pages/acerca.html" class="btn btn-brand-light btn-sm fw-bold mt-2">Conocer más</a>
                 </div>
@@ -156,9 +177,15 @@
                             </p>
                         </div>
 
-                        <!-- Institución -->
+                        <!-- Instituciones -->
                         <div class="col-md-4 mb-3 px-3">
-                            <h6 class="fw-bold fs-5">Institución</h6>
+                            <h6 class="fw-bold fs-5">Instituciones</h6>
+                            <p class="small mb-1">
+                                <strong>MINED</strong><br>
+                                📍 Managua, Nicaragua<br>
+                                🌐 <a href="https://www.mined.gob.ni"
+                                    class="text-white text-decoration-none">mined.gob.ni</a>
+                            </p>
                             <p class="small mb-0">
                                 <strong>INIDE</strong><br>
                                 📍 Managua, Nicaragua<br>
@@ -166,6 +193,7 @@
                                     class="text-white text-decoration-none">inide.gob.ni</a>
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>

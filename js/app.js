@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalContent = document.getElementById("loginModalContent");
     const loginModal = document.getElementById("loginModal");
 
-    // Lógica del login con el modal 
+    // Lógica del login con el modal
     if (loginModal && modalContent) {
         loginModal.addEventListener("show.bs.modal", () => {
-            const path = window.location.pathname.includes("/pages/")
-                ? "login.html"
-                : "pages/login.html";
+            // Siempre carga login.html desde la carpeta /pages
+            const path = "/pages/login.html";
 
             fetch(path)
                 .then(res => res.text())
@@ -19,27 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
                         form.addEventListener("submit", (e) => {
                             e.preventDefault();
 
+                            // Validación con Bootstrap
+                            if (!form.checkValidity()) {
+                                form.classList.add("was-validated");
+                                return;
+                            }
+
                             const username = form.querySelector("#username").value;
                             const password = form.querySelector("#password").value;
                             const role = form.querySelector("#role").value;
-
-                            if (!username || !password || !role) {
-                                alert("Por favor, completa todos los campos.");
-                                return;
-                            }
 
                             // Guardar sesión
                             localStorage.setItem("isLoggedIn", "true");
                             localStorage.setItem("username", username);
                             localStorage.setItem("role", role);
 
-                            // Redirigir según rol
+                            // Redirigir según rol (rutas absolutas)
                             if (role === "admin") {
-                                window.location.href = "pages/admin.html";
+                                window.location.href = "/pages/admin.html";
                             } else if (role === "investigador") {
-                                window.location.href = "pages/investigador.html";
+                                window.location.href = "/pages/investigador.html";
                             } else {
-                                window.location.href = "index.html";
+                                window.location.href = "/index.html";
                             }
                         });
                     }
@@ -76,7 +76,7 @@ function actualizarNavbar() {
         logoutBtn.addEventListener("click", () => {
             localStorage.clear();
             alert("Sesión cerrada");
-            window.location.href = "../index.html"; // vuelve a la landing
+            window.location.href = "/index.html"; // vuelve a la landing
         });
     } else if (userDropdown) {
         userDropdown.innerHTML = "";
