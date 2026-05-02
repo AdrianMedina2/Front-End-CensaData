@@ -87,12 +87,13 @@ body {
     left: 0;
 }
 
-.img {
-    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
-        url("../img/image.png") no-repeat center center;
+/* Foto Hero */
+.hero-img {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/censos.jpg');
     background-size: cover;
-    color: white;
-    padding: 100px 20px;
+    background-position: up center;
+    background-repeat: no-repeat;
+    min-height: 70vh; 
 }
 
 /* Clase general para animación hover */
@@ -104,4 +105,18 @@ body {
     transform: translateY(-8px); /* se levanta */
     box-shadow: 0 1rem 1.5rem rgba(0,0,0,.15); /* sombra más intensa */
     cursor:default;
+}
+
+/* Animación al cargar */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
