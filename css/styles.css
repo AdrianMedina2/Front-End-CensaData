@@ -22,6 +22,15 @@ body {
 :root {
     --color-brand: #0033cc;
     --color-brand-hover: #002299;
+    --edge-color-rgb: 0, 51, 204;
+    --edge-thickness: 8px;
+    /* grosor de las tiras */
+    --edge-blur: 6px;
+    /* blur de las tiras */
+    --edge-focus-size: 120px;
+    /* tamaño visual del foco a lo largo de la tira */
+    --base-shadow-alpha: 0.18;
+    /* sombra global por defecto (más fuerte) */
 }
 
 /* Color de texto */
@@ -89,11 +98,11 @@ body {
 
 /* Foto Hero */
 .hero-img {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/censos.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/censos.jpg');
     background-size: cover;
     background-position: up center;
     background-repeat: no-repeat;
-    min-height: 70vh; 
+    min-height: 70vh;
 }
 
 /* Clase general para animación hover */
@@ -102,9 +111,11 @@ body {
 }
 
 .hover-lift:hover {
-    transform: translateY(-8px); /* se levanta */
-    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.15); /* sombra más intensa */
-    cursor:default;
+    transform: translateY(-8px);
+    /* se levanta */
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .15);
+    /* sombra más intensa */
+    cursor: default;
 }
 
 /* Animación al cargar */
@@ -119,4 +130,77 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* contenedor con sombra base siempre presente */
+.hover-trail {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    box-shadow: 0 12px 36px rgba(0, 51, 204, var(--base-shadow-alpha));
+    transition: box-shadow 220ms linear;
+}
+
+/* tiras (inyectadas por JS) — siempre visibles; la intensidad real viene del background */
+.hover-trail .edge {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    will-change: background-position, transform;
+    filter: blur(var(--edge-blur));
+    opacity: 1;
+}
+
+/* izquierda */
+.hover-trail .edge.left {
+    left: calc(-1 * var(--edge-thickness));
+    top: 0;
+    width: var(--edge-thickness);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+    transform-origin: left center;
+}
+
+/* derecha */
+.hover-trail .edge.right {
+    right: calc(-1 * var(--edge-thickness));
+    top: 0;
+    width: var(--edge-thickness);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+    transform-origin: right center;
+}
+
+/* arriba */
+.hover-trail .edge.top {
+    top: calc(-1 * var(--edge-thickness));
+    left: 0;
+    height: var(--edge-thickness);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: var(--edge-focus-size) 100%;
+    background-position: 50% 0%;
+    transform-origin: center top;
+}
+
+/* abajo */
+.hover-trail .edge.bottom {
+    bottom: calc(-1 * var(--edge-thickness));
+    left: 0;
+    height: var(--edge-thickness);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: var(--edge-focus-size) 100%;
+    background-position: 50% 0%;
+    transform-origin: center bottom;
+}
+
+/* contenido por encima */
+.hover-trail>* {
+    position: relative;
+    z-index: 1;
 }
