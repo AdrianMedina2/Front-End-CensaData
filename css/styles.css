@@ -22,15 +22,12 @@ body {
 :root {
     --color-brand: #0033cc;
     --color-brand-hover: #002299;
+    /* colores para la animación de tiras de borde dinámicas*/
     --edge-color-rgb: 0, 51, 204;
-    --edge-thickness: 8px;
-    /* grosor de las tiras */
-    --edge-blur: 6px;
-    /* blur de las tiras */
+    --edge-thickness: 15px;
+    --edge-blur: 9px;
     --edge-focus-size: 120px;
-    /* tamaño visual del foco a lo largo de la tira */
-    --base-shadow-alpha: 0.18;
-    /* sombra global por defecto (más fuerte) */
+    --base-shadow-alpha: 0.40;
 }
 
 /* Color de texto */
@@ -132,75 +129,84 @@ body {
     }
 }
 
-/* contenedor con sombra base siempre presente */
+/* Animacion de sombras */
+/* Se establece el contenedor con sombra base y transición */
 .hover-trail {
     position: relative;
     overflow: visible;
     z-index: 1;
-    box-shadow: 0 12px 36px rgba(0, 51, 204, var(--base-shadow-alpha));
+    box-shadow: 0 12px 36px rgba(var(--edge-color-rgb), var(--base-shadow-alpha));
     transition: box-shadow 220ms linear;
 }
 
-/* tiras (inyectadas por JS) — siempre visibles; la intensidad real viene del background */
+/* Se define la base común para las tiras (gradiente, tamaño y blur) */
 .hover-trail .edge {
     position: absolute;
     pointer-events: none;
     z-index: 0;
-    will-change: background-position, transform;
+    will-change: background-position;
     filter: blur(var(--edge-blur));
-    opacity: 1;
+    background-repeat: no-repeat;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+    --a: 0.22;
 }
 
-/* izquierda */
+/* Se añade una capa extra para intensificar el brillo sin alterar la animación */
+.hover-trail .edge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: inherit;
+    opacity: calc(var(--a, 0.22) * 1.4);
+    filter: blur(calc(var(--edge-blur) * 1.05));
+    mix-blend-mode: screen;
+    z-index: -1;
+}
+
+/* Se posiciona y dimensiona la tira izquierda */
 .hover-trail .edge.left {
-    left: calc(-1 * var(--edge-thickness));
+    left: calc(var(--edge-thickness) * -1);
     top: 0;
     width: var(--edge-thickness);
     height: 100%;
-    background-repeat: no-repeat;
     background-size: 100% var(--edge-focus-size);
     background-position: 0% 50%;
-    transform-origin: left center;
 }
 
-/* derecha */
+/* Se posiciona y dimensiona la tira derecha */
 .hover-trail .edge.right {
-    right: calc(-1 * var(--edge-thickness));
+    right: calc(var(--edge-thickness) * -1);
     top: 0;
     width: var(--edge-thickness);
     height: 100%;
-    background-repeat: no-repeat;
     background-size: 100% var(--edge-focus-size);
     background-position: 0% 50%;
-    transform-origin: right center;
 }
 
-/* arriba */
+/* Se posiciona y dimensiona la tira superior */
 .hover-trail .edge.top {
-    top: calc(-1 * var(--edge-thickness));
+    top: calc(var(--edge-thickness) * -1);
     left: 0;
     height: var(--edge-thickness);
     width: 100%;
-    background-repeat: no-repeat;
     background-size: var(--edge-focus-size) 100%;
     background-position: 50% 0%;
-    transform-origin: center top;
 }
 
-/* abajo */
+/* Se posiciona y dimensiona la tira inferior */
 .hover-trail .edge.bottom {
-    bottom: calc(-1 * var(--edge-thickness));
+    bottom: calc(var(--edge-thickness) * -1);
     left: 0;
     height: var(--edge-thickness);
     width: 100%;
-    background-repeat: no-repeat;
     background-size: var(--edge-focus-size) 100%;
     background-position: 50% 0%;
-    transform-origin: center bottom;
 }
 
-/* contenido por encima */
-.hover-trail>* {
+/* Se asegura que el contenido quede por encima de las tiras */
+.hover-trail > * {
     position: relative;
     z-index: 1;
 }

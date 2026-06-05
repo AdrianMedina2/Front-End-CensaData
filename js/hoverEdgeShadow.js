@@ -1,151 +1,108 @@
 (function () {
-    const COLOR_RGB = '0,51,204';   // #0033cc
-    const BASE_EDGE_ALPHA = 0.22;   // alpha base de las tiras (más visible)
-    const MAX_EDGE_ALPHA = 2.0;     // alpha máximo local (muy fuerte)
-    const SMOOTH = 0.18;            // lerp smoothing
-    const SIGMA = 140;              // px: controla cuánto rango tiene el foco (mayor = se activa antes)
+    // Se define el color y parámetros principales
+    const COLOR_RGB = '0,51,204';
+    const BASE_EDGE_ALPHA = 0.22;
+    const MAX_EDGE_ALPHA = 1.0;
+    const SMOOTH = 0.30;
+    const SIGMA = 140;
     const FOCUS_SIZE = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--edge-focus-size')) || 120;
 
+    // Utilidades matemáticas
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    const gauss = (d, s) => Math.exp(- (d * d) / (2 * s * s));
+
+    // Se crea un elemento .edge en la posición indicada
     function createEdge(root, pos) {
-        const d = document.createElement('div');
-        d.className = `edge ${pos}`;
-        root.insertBefore(d, root.firstChild);
-        return d;
+        const d = document.createElement('div'); d.className = `edge ${pos}`; root.insertBefore(d, root.firstChild); return d;
     }
 
-    function gradientFor(pos, alpha) {
-        if (pos === 'left') {
-            return `linear-gradient(to right, rgba(${COLOR_RGB}, ${alpha}) 0%, rgba(${COLOR_RGB}, ${(alpha * 0.7).toFixed(3)}) 40%, rgba(${COLOR_RGB}, ${(alpha * 0.25).toFixed(3)}) 70%, transparent 100%)`;
-        } else if (pos === 'right') {
-            return `linear-gradient(to left, rgba(${COLOR_RGB}, ${alpha}) 0%, rgba(${COLOR_RGB}, ${(alpha * 0.7).toFixed(3)}) 40%, rgba(${COLOR_RGB}, ${(alpha * 0.25).toFixed(3)}) 70%, transparent 100%)`;
-        } else if (pos === 'top') {
-            return `linear-gradient(to bottom, rgba(${COLOR_RGB}, ${alpha}) 0%, rgba(${COLOR_RGB}, ${(alpha * 0.7).toFixed(3)}) 40%, rgba(${COLOR_RGB}, ${(alpha * 0.25).toFixed(3)}) 70%, transparent 100%)`;
-        } else {
-            return `linear-gradient(to top, rgba(${COLOR_RGB}, ${alpha}) 0%, rgba(${COLOR_RGB}, ${(alpha * 0.7).toFixed(3)}) 40%, rgba(${COLOR_RGB}, ${(alpha * 0.25).toFixed(3)}) 70%, transparent 100%)`;
-        }
+    // Se genera el gradiente según orientación y alpha
+    function gradientFor(pos, a) {
+        const p = pos === 'left' ? 'to right' : pos === 'right' ? 'to left' : pos === 'top' ? 'to bottom' : 'to top';
+        return `linear-gradient(${p}, rgba(${COLOR_RGB}, ${a}) 0%, rgba(${COLOR_RGB}, ${(a * 0.7).toFixed(3)}) 40%, rgba(${COLOR_RGB}, ${(a * 0.25).toFixed(3)}) 70%, transparent 100%)`;
     }
 
-    function gaussian(dist, sigma) {
-        return Math.exp(- (dist * dist) / (2 * sigma * sigma));
-    }
-
+    // Inicializa el efecto en el contenedor dado
     function init(root) {
+        // Se leen variables CSS una vez
+        const docStyle = getComputedStyle(document.documentElement);
+        const thickness = docStyle.getPropertyValue('--edge-thickness') || '8px';
+        const blur = docStyle.getPropertyValue('--edge-blur') || '6px';
+
+        // Se obtienen o crean las cuatro tiras
         const left = root.querySelector('.edge.left') || createEdge(root, 'left');
         const right = root.querySelector('.edge.right') || createEdge(root, 'right');
         const top = root.querySelector('.edge.top') || createEdge(root, 'top');
         const bottom = root.querySelector('.edge.bottom') || createEdge(root, 'bottom');
 
-        [['left', left], ['right', right], ['top', top], ['bottom', bottom]].forEach(([pos, el]) => {
-            if (!el) return;
-            el.style.background = gradientFor(pos, BASE_EDGE_ALPHA);
-            if (pos === 'left' || pos === 'right') el.style.width = getComputedStyle(document.documentElement).getPropertyValue('--edge-thickness') || '8px';
-            else el.style.height = getComputedStyle(document.documentElement).getPropertyValue('--edge-thickness') || '8px';
-            el.style.filter = `blur(${getComputedStyle(document.documentElement).getPropertyValue('--edge-blur') || 6}px)`;
-        });
+        // Se aplican tamaños y estilos iniciales
+        [[left, 'left'], [right, 'right']].forEach(([el]) => el && (el.style.width = thickness));
+        [[top, 'top'], [bottom, 'bottom']].forEach(([el]) => el && (el.style.height = thickness));
+        [left, right, top, bottom].forEach(el => el && (el.style.filter = `blur(${blur})`, el.style.background = gradientFor(el.classList.contains('left') ? 'left' : el.classList.contains('right') ? 'right' : el.classList.contains('top') ? 'top' : 'bottom', BASE_EDGE_ALPHA)));
 
+        // Estado objetivo y estado actual
         let target = { aL: BASE_EDGE_ALPHA, aR: BASE_EDGE_ALPHA, aT: BASE_EDGE_ALPHA, aB: BASE_EDGE_ALPHA, px: 50, py: 50 };
-        let current = { ...target };
-        let raf = null;
+        let cur = { ...target }, raf = null;
 
-        const lerp = (a, b, t) => a + (b - a) * t;
-        const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-
-        function onMove(e) {
+        // Calcula objetivos a partir de coordenadas del puntero
+        function updateTargets(clientX, clientY) {
             const r = root.getBoundingClientRect();
-            const x = e.clientX - r.left;
-            const y = e.clientY - r.top;
-            const px = clamp((x / r.width) * 100, 0, 100);
-            const py = clamp((y / r.height) * 100, 0, 100);
+            const x = clientX - r.left, y = clientY - r.top;
+            const px = clamp((x / r.width) * 100, 0, 100), py = clamp((y / r.height) * 100, 0, 100);
 
-            // puntos más cercanos en cada borde (coordenadas en sistema local)
-            const leftPoint = { x: 0, y: clamp(y, 0, r.height) };
-            const rightPoint = { x: r.width, y: clamp(y, 0, r.height) };
-            const topPoint = { x: clamp(x, 0, r.width), y: 0 };
-            const bottomPoint = { x: clamp(x, 0, r.width), y: r.height };
+            const dL = Math.hypot(x - 0, y - clamp(y, 0, r.height));
+            const dR = Math.hypot(x - r.width, y - clamp(y, 0, r.height));
+            const dT = Math.hypot(x - clamp(x, 0, r.width), y - 0);
+            const dB = Math.hypot(x - clamp(x, 0, r.width), y - r.height);
 
-            // distancia euclidiana desde el mouse a cada punto del borde
-            const distL = Math.hypot(x - leftPoint.x, y - leftPoint.y);
-            const distR = Math.hypot(x - rightPoint.x, y - rightPoint.y);
-            const distT = Math.hypot(x - topPoint.x, y - topPoint.y);
-            const distB = Math.hypot(x - bottomPoint.x, y - bottomPoint.y);
+            const lL = gauss(dL, SIGMA), lR = gauss(dR, SIGMA), lT = gauss(dT, SIGMA), lB = gauss(dB, SIGMA);
 
-            // factor local 0..1 por borde (gaussiana sobre la distancia al punto)
-            const localL = gaussian(distL, SIGMA);
-            const localR = gaussian(distR, SIGMA);
-            const localT = gaussian(distT, SIGMA);
-            const localB = gaussian(distB, SIGMA);
-
-            // combinar base + local (escala a MAX_EDGE_ALPHA)
-            const aL = BASE_EDGE_ALPHA + localL * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA);
-            const aR = BASE_EDGE_ALPHA + localR * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA);
-            const aT = BASE_EDGE_ALPHA + localT * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA);
-            const aB = BASE_EDGE_ALPHA + localB * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA);
-
-            target.aL = clamp(aL, BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
-            target.aR = clamp(aR, BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
-            target.aT = clamp(aT, BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
-            target.aB = clamp(aB, BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
+            target.aL = clamp(BASE_EDGE_ALPHA + lL * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA), BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
+            target.aR = clamp(BASE_EDGE_ALPHA + lR * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA), BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
+            target.aT = clamp(BASE_EDGE_ALPHA + lT * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA), BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
+            target.aB = clamp(BASE_EDGE_ALPHA + lB * (MAX_EDGE_ALPHA - BASE_EDGE_ALPHA), BASE_EDGE_ALPHA, MAX_EDGE_ALPHA);
             target.px = px; target.py = py;
-
-            if (!raf) rafLoop();
         }
 
-        function onLeave() {
-            target.aL = target.aR = target.aT = target.aB = BASE_EDGE_ALPHA;
-            target.px = target.py = 50;
-            if (!raf) rafLoop();
-        }
-
+        // Loop de animación con rAF
         function rafLoop() {
-            current.aL = lerp(current.aL, target.aL, SMOOTH);
-            current.aR = lerp(current.aR, target.aR, SMOOTH);
-            current.aT = lerp(current.aT, target.aT, SMOOTH);
-            current.aB = lerp(current.aB, target.aB, SMOOTH);
-            current.px = lerp(current.px, target.px, SMOOTH);
-            current.py = lerp(current.py, target.py, SMOOTH);
+            cur.aL = lerp(cur.aL, target.aL, SMOOTH);
+            cur.aR = lerp(cur.aR, target.aR, SMOOTH);
+            cur.aT = lerp(cur.aT, target.aT, SMOOTH);
+            cur.aB = lerp(cur.aB, target.aB, SMOOTH);
+            cur.px = lerp(cur.px, target.px, SMOOTH);
+            cur.py = lerp(cur.py, target.py, SMOOTH);
 
-            // actualizar cada tira: background con alpha y posición del foco puntual
-            if (left) {
-                left.style.background = gradientFor('left', current.aL);
-                left.style.backgroundPosition = `0% ${current.py.toFixed(1)}%`;
-            }
-            if (right) {
-                right.style.background = gradientFor('right', current.aR);
-                right.style.backgroundPosition = `0% ${current.py.toFixed(1)}%`;
-            }
-            if (top) {
-                top.style.background = gradientFor('top', current.aT);
-                top.style.backgroundPosition = `${current.px.toFixed(1)}% 0%`;
-            }
-            if (bottom) {
-                bottom.style.background = gradientFor('bottom', current.aB);
-                bottom.style.backgroundPosition = `${current.px.toFixed(1)}% 0%`;
-            }
+            if (left) { left.style.background = gradientFor('left', cur.aL); left.style.backgroundPosition = `0% ${cur.py}%`; }
+            if (right) { right.style.background = gradientFor('right', cur.aR); right.style.backgroundPosition = `0% ${cur.py}%`; }
+            if (top) { top.style.background = gradientFor('top', cur.aT); top.style.backgroundPosition = `${cur.px}% 0%`; }
+            if (bottom) { bottom.style.background = gradientFor('bottom', cur.aB); bottom.style.backgroundPosition = `${cur.px}% 0%`; }
 
-            // box-shadow global responde suavemente (más fuerte cuando hay actividad)
-            const totalAlpha = (current.aL + current.aR + current.aT + current.aB) / 4;
-            const boxAlpha = Math.max(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--base-shadow-alpha')) || 0.06, totalAlpha * 0.12);
+            const total = (cur.aL + cur.aR + cur.aT + cur.aB) / 4;
+            const baseShadow = parseFloat(docStyle.getPropertyValue('--base-shadow-alpha')) || 0.06;
+            const boxAlpha = Math.max(baseShadow, total * 0.12);
             root.style.boxShadow = `0 12px 36px rgba(${COLOR_RGB}, ${boxAlpha.toFixed(3)})`;
 
-            const da = Math.abs(current.aL - target.aL) + Math.abs(current.aR - target.aR)
-                + Math.abs(current.aT - target.aT) + Math.abs(current.aB - target.aB);
-            const dp = Math.abs(current.px - target.px) + Math.abs(current.py - target.py);
-            if (da < 0.005 && dp < 0.2) {
-                cancelAnimationFrame(raf);
-                raf = null;
-                return;
-            }
+            const da = Math.abs(cur.aL - target.aL) + Math.abs(cur.aR - target.aR) + Math.abs(cur.aT - target.aT) + Math.abs(cur.aB - target.aB);
+            const dp = Math.abs(cur.px - target.px) + Math.abs(cur.py - target.py);
+            if (da < 0.005 && dp < 0.2) { cancelAnimationFrame(raf); raf = null; return; }
             raf = requestAnimationFrame(rafLoop);
         }
 
-        root.addEventListener('mousemove', onMove);
-        root.addEventListener('mouseenter', onMove);
-        root.addEventListener('mouseleave', onLeave);
+        // Handlers de puntero
+        const onMove = e => { updateTargets(e.clientX, e.clientY); if (!raf) rafLoop(); };
+        const onLeave = () => { target.aL = target.aR = target.aT = target.aB = BASE_EDGE_ALPHA; target.px = target.py = 50; if (!raf) rafLoop(); };
 
-        return { destroy() { root.removeEventListener('mousemove', onMove); root.removeEventListener('mouseenter', onMove); root.removeEventListener('mouseleave', onLeave); } };
+        // Se añaden listeners
+        root.addEventListener('pointermove', onMove);
+        root.addEventListener('pointerenter', onMove);
+        root.addEventListener('pointerleave', onLeave);
+
+        // Se devuelve método de limpieza
+        return { destroy() { root.removeEventListener('pointermove', onMove); root.removeEventListener('pointerenter', onMove); root.removeEventListener('pointerleave', onLeave); } };
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.hover-trail').forEach(el => init(el));
-    });
+    // Auto-inicialización en DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.hover-trail').forEach(el => init(el)));
 })();
