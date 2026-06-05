@@ -22,6 +22,12 @@ body {
 :root {
     --color-brand: #0033cc;
     --color-brand-hover: #002299;
+    /* colores para la animación de tiras de borde dinámicas*/
+    --edge-color-rgb: 0, 51, 204;
+    --edge-thickness: 15px;
+    --edge-blur: 9px;
+    --edge-focus-size: 120px;
+    --base-shadow-alpha: 0.40;
 }
 
 /* Color de texto */
@@ -89,11 +95,11 @@ body {
 
 /* Foto Hero */
 .hero-img {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/censos.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/censos.jpg');
     background-size: cover;
     background-position: up center;
     background-repeat: no-repeat;
-    min-height: 70vh; 
+    min-height: 70vh;
 }
 
 /* Clase general para animación hover */
@@ -102,9 +108,11 @@ body {
 }
 
 .hover-lift:hover {
-    transform: translateY(-8px); /* se levanta */
-    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.15); /* sombra más intensa */
-    cursor:default;
+    transform: translateY(-8px);
+    /* se levanta */
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .15);
+    /* sombra más intensa */
+    cursor: default;
 }
 
 /* Animación al cargar */
@@ -119,4 +127,86 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Animacion de sombras */
+/* Se establece el contenedor con sombra base y transición */
+.hover-trail {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    box-shadow: 0 12px 36px rgba(var(--edge-color-rgb), var(--base-shadow-alpha));
+    transition: box-shadow 220ms linear;
+}
+
+/* Se define la base común para las tiras (gradiente, tamaño y blur) */
+.hover-trail .edge {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    will-change: background-position;
+    filter: blur(var(--edge-blur));
+    background-repeat: no-repeat;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+    --a: 0.22;
+}
+
+/* Se añade una capa extra para intensificar el brillo sin alterar la animación */
+.hover-trail .edge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: inherit;
+    opacity: calc(var(--a, 0.22) * 1.4);
+    filter: blur(calc(var(--edge-blur) * 1.05));
+    mix-blend-mode: screen;
+    z-index: -1;
+}
+
+/* Se posiciona y dimensiona la tira izquierda */
+.hover-trail .edge.left {
+    left: calc(var(--edge-thickness) * -1);
+    top: 0;
+    width: var(--edge-thickness);
+    height: 100%;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+}
+
+/* Se posiciona y dimensiona la tira derecha */
+.hover-trail .edge.right {
+    right: calc(var(--edge-thickness) * -1);
+    top: 0;
+    width: var(--edge-thickness);
+    height: 100%;
+    background-size: 100% var(--edge-focus-size);
+    background-position: 0% 50%;
+}
+
+/* Se posiciona y dimensiona la tira superior */
+.hover-trail .edge.top {
+    top: calc(var(--edge-thickness) * -1);
+    left: 0;
+    height: var(--edge-thickness);
+    width: 100%;
+    background-size: var(--edge-focus-size) 100%;
+    background-position: 50% 0%;
+}
+
+/* Se posiciona y dimensiona la tira inferior */
+.hover-trail .edge.bottom {
+    bottom: calc(var(--edge-thickness) * -1);
+    left: 0;
+    height: var(--edge-thickness);
+    width: 100%;
+    background-size: var(--edge-focus-size) 100%;
+    background-position: 50% 0%;
+}
+
+/* Se asegura que el contenido quede por encima de las tiras */
+.hover-trail > * {
+    position: relative;
+    z-index: 1;
 }

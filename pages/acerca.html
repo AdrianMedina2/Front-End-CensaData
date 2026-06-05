@@ -23,9 +23,9 @@
     <nav class="navbar navbar-expand-lg bg-brand py-3 px-5">
         <div class="container-fluid">
             <a class="navbar-brand text-white fs-3" href="../index.html">
-                <i class="bi bi-clipboard-check me-2"></i>
-                <span class="fw-bold">Censa</span>Data
+                <img src="../img/CensadataWhite.png" alt="Logo CensaData" class="me-2" style="width: 110px; height: auto;">
             </a>
+
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,9 +33,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="../index.html">Inicio</a>
-                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="acerca.html">Acerca de nosotros</a>
-                    <a href="#" class="btn btn-brand-light fw-bold rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#loginModal">Iniciar sesión</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="#">Acerca de nosotros</a>
+                    <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
+                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="#" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="bi bi-box-arrow-up-right me-1"></i> Iniciar sesión
+                    </a>
                 </div>
             </div>
         </div>
@@ -54,23 +57,23 @@
     <!-- Contenido principal -->
     <main class="container my-5">
         <h2 class="fw-bold color-brand mb-4">Acerca de nosotros</h2>
-
+    
         <!-- Video embebido -->
         <div class="ratio ratio-16x9 my-4">
             <iframe src="https://www.youtube.com/embed/NsZMdqoMWDs" title="Video institucional CensaData"
                 allowfullscreen></iframe>
         </div>
-
+    
         <!-- Descripción general -->
         <p class="lead">
-            CensaData es un sistema diseñado para apoyar la gestión y análisis de datos del INIDE y MINED.
+            CensaData es un sistema diseñado para apoyar la gestión y análisis de datos del INIDE.
             Nuestro objetivo es ofrecer herramientas confiables, seguras y fáciles de usar para investigadores y
             administradores.
         </p>
         <p>
-            Ofrece soporte para el INIDE y MINED, garantizando procesos de censado seguros y transparentes.
+            Ofrece soporte para el INIDE, garantizando procesos de censado seguros y transparentes.
         </p>
-
+    
         <!-- Misión y visión en cards -->
         <div class="row my-5">
             <div class="col-md-6 mb-3">
@@ -92,8 +95,7 @@
                 </div>
             </div>
         </div>
-
-
+    
         <!-- Valores -->
         <h4 class="fw-bold color-brand">Nuestros valores</h4>
         <ul class="list-unstyled">
@@ -101,16 +103,14 @@
             <li><i class="bi bi-people color-brand me-2"></i> Transparencia y colaboración.</li>
             <li><i class="bi bi-lightbulb color-brand me-2"></i> Innovación constante.</li>
         </ul>
-
-        <!-- Instituciones aliadas -->
-        <h4 class="fw-bold mt-4 color-brand">Instituciones aliadas</h4>
+    
+        <!-- Institución aliada -->
+        <h4 class="fw-bold mt-4 color-brand">Institución aliada</h4>
         <p>
-            Diseñamos el sistema para las instituciones <strong>INIDE</strong> y el <strong>MINED</strong>,
-            garantizando procesos censales confiables y transparentes que fortalecen tanto la gestión estadística
-            como la planificación educativa nacional.
+            Diseñamos el sistema para el <strong>INIDE</strong>, garantizando procesos censales confiables y transparentes
+            que fortalecen la gestión estadística nacional.
         </p>
-
-
+    
         <!-- Contactos -->
         <h4 class="fw-bold mt-4 color-brand">Contáctanos</h4>
         <p>
@@ -119,8 +119,6 @@
             ✉️ info@censadata.com
         </p>
     </main>
-
-
 
     <!-- Footer -->
     <footer class="bg-brand text-white text-center content-center py-3 mt-5">
