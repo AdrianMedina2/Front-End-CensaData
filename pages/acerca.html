@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de nosotros - CensaData</title>
-    <link rel="icon" type="image/png" href="img/Censadata.ico">
+    <link rel="icon" type="image/png" href="../img/Censadata.ico">
     <!-- Boostrap CSS desde CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -33,7 +33,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="../index.html">Inicio</a>
-                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="#">Acerca de nosotros</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./reports.html">Reportes</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./acerca.html">Acerca de nosotros</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./FAQ.html">Preguntas frecuentes</a>
                     <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
                     <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="#" target="_blank"
                         rel="noopener noreferrer">
@@ -44,26 +46,17 @@
         </div>
     </nav>
 
-    <!-- Modal login flotante -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <!-- Modal transparente y sin bordes -->
-            <div class="modal-content border-0 shadow-none bg-transparent p-0" id="loginModalContent">
-                <!-- Aquí se carga el login con javascript -->
-            </div>
-        </div>
-    </div>
-
     <!-- Contenido principal -->
     <main class="container my-5">
         <h2 class="fw-bold color-brand mb-4">Acerca de nosotros</h2>
     
         <!-- Video embebido -->
-        <div class="ratio ratio-16x9 my-4">
-            <iframe src="https://www.youtube.com/embed/NsZMdqoMWDs" title="Video institucional CensaData"
-                allowfullscreen></iframe>
+        <div class="hover-trail">
+            <div class="ratio ratio-16x9 my-4">
+                <iframe src="https://www.youtube.com/embed/NsZMdqoMWDs" title="Video institucional CensaData"
+                    allowfullscreen></iframe>
+            </div>
         </div>
-    
         <!-- Descripción general -->
         <p class="lead">
             CensaData es un sistema diseñado para apoyar la gestión y análisis de datos del INIDE.

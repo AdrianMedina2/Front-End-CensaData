@@ -23,7 +23,8 @@
     <nav class="navbar navbar-expand-lg bg-brand py-3 px-5">
         <div class="container-fluid">
             <a class="navbar-brand text-white fs-3" href="#">
-                <img src="./img/CensadataWhite.png" alt="Logo CensaData" class="me-2" style="width: 110px; height: auto;">
+                <img src="./img/CensadataWhite.png" alt="Logo CensaData" class="me-2"
+                    style="width: 110px; height: auto;">
             </a>
 
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -33,7 +34,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="index.html">Inicio</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/reports.html">Reportes</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/acerca.html">Acerca de nosotros</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/FAQ.html">Preguntas frecuentes</a>
                     <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
                     <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="#" target="_blank"
                         rel="noopener noreferrer">
@@ -43,10 +46,11 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Contenido principal -->
     <main class="container mt-5 text-center">
-        <div class="hover-trail hero-img d-flex flex-column justify-content-center align-items-center text-center text-white rounded">
+        <div
+            class="hover-trail hero-img d-flex flex-column justify-content-center align-items-center text-center text-white rounded">
             <div class="bg-dark bg-opacity-50 p-4 rounded d-inline-block hover-lift fade-in">
                 <h1 class="display-4 fw-bold">Bienvenido a CensaData</h1>
                 <p class="lead">Gestión y análisis de datos para el INIDE</p>
@@ -103,12 +107,13 @@
 
         <hr>
         <!-- institucion aliada -->
-            <section class="py-5 hover-trail">
+        <section class="py-5 hover-trail">
             <div class="container">
                 <h2 class="color-brand fw-bold text-center mb-5">Institución aliada</h2>
                 <div class="row align-items-center">
                     <div class="col-md-4 text-center mb-4 mb-md-0">
-                        <img src="./img/inidelogo.png" alt="Logo INIDE" class="img-fluid mb-5 pb-5" style="max-width: 180px;">
+                        <img src="./img/inidelogo.png" alt="Logo INIDE" class="img-fluid mb-5 pb-5"
+                            style="max-width: 180px;">
                     </div>
                     <div class="col-md-8">
                         <h5 class="fw-bold mb-3">
@@ -116,7 +121,8 @@
                             Instituto Nacional de Información de Desarrollo (INIDE)
                         </h5>
                         <p class="text-muted">
-                            Organismo rector de las estadísticas oficiales en Nicaragua. Responsable de censos nacionales,
+                            Organismo rector de las estadísticas oficiales en Nicaragua. Responsable de censos
+                            nacionales,
                             encuestas socioeconómicas y publicaciones que sirven de base para políticas públicas.
                         </p>
                         <a href="https://www.inide.gob.ni" target="_blank" rel="noopener noreferrer"
@@ -161,53 +167,49 @@
                     </h4>
                     <p class="small">
                         Sistema diseñado para apoyar la gestión y análisis de datos censales del INIDE.
-                        Ofreciendo herramientas confiables, seguras y fáciles de usar para investigadores y administradores.
+                        Ofreciendo herramientas confiables, seguras y fáciles de usar para investigadores y
+                        administradores.
                     </p>
                     <a href="pages/acerca.html" class="btn btn-brand-light btn-sm fw-bold mt-2">Conocer más</a>
                 </div>
-    
-                <!-- Bloque derecho con 2 columnas -->
-                <div class="col-md-8">
-                    <div class="row">
-                        <!-- Ayuda -->
-                        <div class="col-md-6 mb-3 px-3">
-                            <h6 class="fw-bold fs-5">Ayuda</h6>
-                            <ul class="list-unstyled small">
-                                <li><a href="#" class="text-white text-decoration-none">
-                                        <i class="bi bi-question-circle me-1"></i> Preguntas frecuentes
-                                    </a></li>
-                                <li><a href="#" class="text-white text-decoration-none">
-                                        <i class="bi bi-tools me-1"></i> Soporte técnico
-                                    </a></li>
-                                <li><a href="#" class="text-white text-decoration-none">
-                                        <i class="bi bi-shield-lock me-1"></i> Política de privacidad
-                                    </a></li>
-                                <li><a href="#" class="text-white text-decoration-none">
-                                        <i class="bi bi-envelope me-1"></i> Contáctanos
-                                    </a></li>
-                            </ul>
+
+                <!-- Contáctanos -->
+                <div class="col-md-4 mb-3 px-3">
+                    <h6 class="fw-bold fs-5">Contáctanos</h6>
+                    <form id="contactForm" class="w-100">
+                        <div class="mb-2">
+                            <label for="email" class="form-label">Tu correo</label>
+                            <input type="email" class="form-control form-control-sm" id="email"
+                                placeholder="ejemplo@correo.com" required>
                         </div>
-    
-                        <!-- Contactos -->
-                        <div class="col-md-6 mb-3 px-3">
-                            <h6 class="fw-bold fs-5">Contactos</h6>
-                            <p class="small mb-1">
-                                📍 Managua, Nicaragua<br>
-                                📞 +505 2222-3333<br>
-                                ✉️ info@censadata.com
-                            </p>
-                            <h6 class="fw-bold fs-5 mt-3">Institución</h6>
-                            <p class="small mb-0">
-                                <strong>INIDE</strong><br>
-                                📍 Managua, Nicaragua<br>
-                                🌐 <a target="_blank" href="https://www.inide.gob.ni"
-                                    class="text-white text-decoration-none">inide.gob.ni</a>
-                            </p>
+                        <div class="mb-2">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea class="form-control form-control-sm" id="message" rows="3"
+                                placeholder="Escribe tu mensaje aquí..." required></textarea>
                         </div>
-                    </div>
+                        <button type="submit" class="btn btn-brand-light btn-sm">Enviar</button>
+                    </form>
+                </div>
+
+                <!-- Institución + Ayuda -->
+                <div class="col-md-4 mb-3 px-3">
+                    <h6 class="fw-bold fs-5">Institución</h6>
+                    <p class="small mb-2">
+                        <strong>INIDE</strong><br>
+                        📍 Managua, Nicaragua<br>
+                        🌐 <a target="_blank" href="https://www.inide.gob.ni"
+                            class="text-white text-decoration-none">inide.gob.ni</a>
+                    </p>
+
+                    <h6 class="fw-bold fs-5 mt-3">Ayuda</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="pages/FAQ.html" class="text-white text-decoration-none">
+                                <i class="bi bi-question-circle me-1"></i> Preguntas frecuentes
+                            </a></li>
+                    </ul>
                 </div>
             </div>
-    
+
             <!-- Línea final -->
             <div class="text-center border-top border-light pt-3">
                 <small>&copy; 2026 CensaData | Todos los derechos reservados</small>
@@ -215,15 +217,28 @@
         </div>
     </footer>
 
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="toastSuccess" class="toast bg-success text-white" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-body">✅ Mensaje enviado correctamente</div>
+        </div>
+        <div id="toastError" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">❌ Error al enviar</div>
+        </div>
+    </div>
 
     <!-- Boostrap JS Bundle desde CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
+    <!-- SDK de EmailJS para el formulario de contacto -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <!-- Scripts Propios -->
     <script src="/js/app.js"></script>
     <script src="/js/hoverEdgeShadow.js"></script>
+    <script src="/js/correo.js"></script>
 </body>
 
 </html>
