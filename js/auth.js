@@ -9,7 +9,7 @@ export async function initVisitorAuth() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                usuario: "Visitante1@gmail.com",
+                Correo: "Visitante1@gmail.com",
                 password: "12345678"
             })
         });

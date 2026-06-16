@@ -92,16 +92,22 @@ body {
     width: 100%;
     left: 0;
 }
-
-/* Foto Hero */
 .hero-img {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/censos.jpg');
     background-size: cover;
-    background-position: up center;
+    background-position: up-center;
     background-repeat: no-repeat;
     min-height: 70vh;
 }
 
+@media (max-width: 768px) {
+    .hero-img {
+        background-position: top center;
+        /* muestra la parte superior en móviles */
+        min-height: 50vh;
+        /* reduce altura para que no se corte tanto */
+    }
+}
 /* Clase general para animación hover */
 .hover-lift {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
