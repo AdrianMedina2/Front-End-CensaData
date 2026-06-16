@@ -4,17 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conoce más sobre CensaData, el sistema de gestión y análisis de datos censales diseñado para apoyar al INIDE. Transparencia, seguridad y eficiencia en la información estadística.">
+    <meta name="keywords"
+        content="CensaData, acerca de nosotros, INIDE, censos, encuestas, gestión de datos, análisis estadístico, Nicaragua">
+    <meta name="author" content="CensaData Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="CensaData | Acerca de nosotros">
+    <meta property="og:description"
+        content="Descubre la misión, visión y valores de CensaData, plataforma confiable para el análisis de datos censales en Nicaragua.">
+    <meta property="og:image" content="https://censadata-inide.netlify.app/img/CensadataWhite.png">
+    <meta property="og:url" content="https://censadata-inide.netlify.app/pages/acerca.html">
+    <meta property="og:type" content="website">
+
     <title>Acerca de nosotros - CensaData</title>
     <link rel="icon" type="image/png" href="../img/Censadata.ico">
-    <!-- Boostrap CSS desde CDN -->
+
+    <!-- Preconnect para optimizar carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap CSS desde CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Fuente Poppins desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Iconos boostrap     -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <!-- Estilos Propios -->
+    <!-- Estilos propios -->
     <link href="../css/styles.css" rel="stylesheet">
 </head>
 
@@ -23,7 +42,8 @@
     <nav class="navbar navbar-expand-lg bg-brand py-3 px-5">
         <div class="container-fluid">
             <a class="navbar-brand text-white fs-3" href="../index.html">
-                <img src="/img/CensadataWhite.png" alt="Logo CensaData" class="me-2" style="width: 110px; height: auto;">
+                <img src="/img/CensadataWhite.png" alt="Logo CensaData" class="me-2"
+                    style="width: 110px; height: auto;">
             </a>
 
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,8 +57,8 @@
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./acerca.html">Acerca de nosotros</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./FAQ.html">Preguntas frecuentes</a>
                     <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
-                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="https://censadata.vercel.app/login" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3"
+                        href="https://censadata.vercel.app/login" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-box-arrow-up-right me-1"></i> Iniciar sesión
                     </a>
                 </div>
@@ -48,8 +68,14 @@
 
     <!-- Contenido principal -->
     <main class="container my-5">
-        <h2 class="fw-bold color-brand mb-4">Acerca de nosotros</h2>
-    
+        <!-- Título principal -->
+        <h1 class="fw-bold color-brand mb-4">Acerca de nosotros</h1>
+        <p class="lead">
+            Conoce la misión, visión y valores de CensaData, sistema de gestión y análisis de datos censales para el
+            INIDE
+            en Nicaragua.
+        </p>
+
         <!-- Video embebido -->
         <div class="hover-trail">
             <div class="ratio ratio-16x9 my-4">
@@ -57,6 +83,7 @@
                     allowfullscreen></iframe>
             </div>
         </div>
+
         <!-- Descripción general -->
         <p class="lead">
             CensaData es un sistema diseñado para apoyar la gestión y análisis de datos del INIDE.
@@ -66,52 +93,53 @@
         <p>
             Ofrece soporte para el INIDE, garantizando procesos de censado seguros y transparentes.
         </p>
-    
+
         <!-- Misión y visión en cards -->
         <div class="row my-5">
             <div class="col-md-6 mb-3">
                 <div class="card shadow-sm p-4 h-100 hover-lift bg-brand text-white">
-                    <h4 class="fw-bold">
+                    <h2 class="fw-bold">
                         <i class="bi bi-bullseye me-2"></i> Misión
-                    </h4>
+                    </h2>
                     <p>CensaData busca fortalecer la gestión de censos institucionales mediante herramientas seguras y
                         accesibles.</p>
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="card shadow-sm p-4 h-100 hover-lift bg-brand text-white">
-                    <h4 class="fw-bold">
+                    <h2 class="fw-bold">
                         <i class="bi bi-eye me-2"></i> Visión
-                    </h4>
+                    </h2>
                     <p>Convertirse en la plataforma de referencia para el análisis de datos censales en Nicaragua,
                         promoviendo transparencia y eficiencia.</p>
                 </div>
             </div>
         </div>
-    
+
         <!-- Valores -->
-        <h4 class="fw-bold color-brand">Nuestros valores</h4>
+        <h2 class="fw-bold color-brand">Nuestros valores</h2>
         <ul class="list-unstyled">
             <li><i class="bi bi-shield-lock color-brand me-2"></i> Seguridad y confianza.</li>
             <li><i class="bi bi-people color-brand me-2"></i> Transparencia y colaboración.</li>
             <li><i class="bi bi-lightbulb color-brand me-2"></i> Innovación constante.</li>
         </ul>
-    
+
         <!-- Institución aliada -->
-        <h4 class="fw-bold mt-4 color-brand">Institución aliada</h4>
+        <h2 class="fw-bold mt-4 color-brand">Institución aliada</h2>
         <p>
-            Diseñamos el sistema para el <strong>INIDE</strong>, garantizando procesos censales confiables y transparentes
+            Diseñamos el sistema para el <strong>INIDE</strong>, garantizando procesos censales confiables y
+            transparentes
             que fortalecen la gestión estadística nacional.
         </p>
-    
+
         <!-- Contactos -->
-        <h4 class="fw-bold mt-4 color-brand">Contáctanos</h4>
+        <h2 class="fw-bold mt-4 color-brand">Contáctanos</h2>
         <p>
             📍 Managua, Nicaragua<br>
-            📞 +505 2222-3333<br>
-            ✉️ info@censadata.com
+            ✉️ censadata@gmail.com
         </p>
     </main>
+
 
     <!-- Footer -->
     <footer class="bg-brand text-white text-center content-center py-3 mt-5">

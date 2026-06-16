@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Consulta y descarga reportes estadísticos en CensaData. Sistema de gestión y análisis de datos censales para el INIDE con seguridad y eficiencia.">
+    <meta name="keywords"
+        content="CensaData, reportes, INIDE, censos, encuestas, gestión de datos, análisis estadístico, Nicaragua">
+    <meta name="author" content="CensaData Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="CensaData | Reportes">
+    <meta property="og:description" content="Accede a reportes estadísticos confiables del INIDE con CensaData.">
+    <meta property="og:image" content="https://censadata-inide.netlify.app/img/CensadataWhite.png">
+    <meta property="og:url" content="https://censadata-inide.netlify.app/pages/reports.html">
+    <meta property="og:type" content="website">
+
+    <title>CensaData | Reportes</title>
+    <link rel="icon" type="image/x-icon" href="../img/Censadata.ico">
+
+    <!-- Preconnect para optimizar carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap CSS desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Fuente Poppins desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Estilos propios -->
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-brand py-3 px-5">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fs-3" href="../index.html">
+                <img src="/img/CensadataWhite.png" alt="Logo CensaData" class="me-2"
+                    style="width: 110px; height: auto;">
+            </a>
+
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex ms-auto flex-lg-row flex-column align-items-center justify-content-center">
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="../index.html">Inicio</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./reports.html">Reportes</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./acerca.html">Acerca de nosotros</a>
+                    <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./FAQ.html">Preguntas frecuentes</a>
+                    <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
+                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3"
+                        href="https://censadata.vercel.app/login" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-box-arrow-up-right me-1"></i> Iniciar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="fw-bold color-brand mb-4">Reportes públicos</h1>
+        <p class="lead">
+            Estos son los reportes que el INIDE ha puesto a disposición pública mediante CensaData.
+            Descárgalos en formato PDF.
+        </p>
+
+        <div class="row" id="reportesPublicos">
+            <!-- Aquí se insertan dinámicamente las cards de reportes -->
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-brand text-white text-center content-center py-3 mt-5">
+        <p class="mb-0">&copy; 2026 CensaData | Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Boostrap JS Bundle desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>    
+
+    <script type="module" src="/js/reportes.js"></script>
+</body>
+
+</html>

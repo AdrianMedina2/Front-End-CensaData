@@ -4,17 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CensaData es un sistema de gestión y análisis de datos censales para el INIDE. Ofrece una herramienta segura, confiable y fácil de usar para investigadores y administradores.">
+    <meta name="keywords"
+        content="CensaData, INIDE, censos, encuestas, gestión de datos, análisis estadístico, Nicaragua">
+    <meta name="author" content="CensaData Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="CensaData | Sistema de Gestión y Análisis de Datos">
+    <meta property="og:description"
+        content="Gestión y análisis de datos censales para el INIDE con seguridad y eficiencia.">
+    <meta property="og:image" content="https://censadata-inide.netlify.app/img/CensadataWhite.png">
+    <meta property="og:url" content="https://censadata-inide.netlify.app/">
+    <meta property="og:type" content="website">
+
     <title>CensaData | Sistema de Gestión y Análisis de Datos.</title>
     <link rel="icon" type="image/x-icon" href="img/Censadata.ico">
-    <!-- Boostrap CSS desde CDN -->
+
+    <!-- Preconnect para optimizar carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap CSS desde CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Boostrap Icons -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Fuente Poppins desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Estilos Propios -->
+    <!-- Estilos propios -->
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 
@@ -38,8 +57,8 @@
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/acerca.html">Acerca de nosotros</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="pages/FAQ.html">Preguntas frecuentes</a>
                     <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
-                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="https://censadata.vercel.app/login" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3"
+                        href="https://censadata.vercel.app/login" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-box-arrow-up-right me-1"></i> Iniciar sesión
                     </a>
                 </div>
@@ -55,7 +74,8 @@
                 <h1 class="display-4 fw-bold">Bienvenido a CensaData</h1>
                 <p class="lead">Gestión y análisis de datos para el INIDE</p>
                 <!-- Botón que llevará a la pagina interna, ya hosteada -->
-                <a href="#" class="btn btn-brand btn-lg fw-bold rounded-pill mt-3">
+                <a target="_blank" href="https://censadata.vercel.app"
+                    class="btn btn-brand btn-lg fw-bold rounded-pill mt-3">
                     Comenzar
                 </a>
             </div>
@@ -78,7 +98,7 @@
                 <div class="card border-0 shadow-sm hover-lift h-100">
                     <div class="card-body text-center">
                         <i class="bi bi-shield-lock-fill fs-1 color-brand"></i>
-                        <h5 class="mt-3">Seguridad</h5>
+                        <h3 class="mt-3">Seguridad</h3>
                         <p>Protección confiable de la información.</p>
                     </div>
                 </div>
@@ -88,7 +108,7 @@
                 <div class="card border-0 shadow-sm hover-lift h-100">
                     <div class="card-body text-center">
                         <i class="bi bi-people-fill fs-1 color-brand"></i>
-                        <h5 class="mt-3">Acceso institucional</h5>
+                        <h3 class="mt-3">Acceso institucional</h3>
                         <p>Acceso colaborativo para el INIDE.</p>
                     </div>
                 </div>
@@ -98,7 +118,7 @@
                 <div class="card border-0 shadow-sm hover-lift h-100">
                     <div class="card-body text-center">
                         <i class="bi bi-globe fs-1 color-brand"></i>
-                        <h5 class="mt-3">Acceso remoto</h5>
+                        <h3 class="mt-3">Acceso remoto</h3>
                         <p>Acceso desde cualquier dispositivo y lugar.</p>
                     </div>
                 </div>
@@ -116,10 +136,10 @@
                             style="max-width: 180px;">
                     </div>
                     <div class="col-md-8">
-                        <h5 class="fw-bold mb-3">
+                        <h3 class="fw-bold mb-3">
                             <i class="bi bi-building color-brand me-2"></i>
                             Instituto Nacional de Información de Desarrollo (INIDE)
-                        </h5>
+                        </h3>
                         <p class="text-muted">
                             Organismo rector de las estadísticas oficiales en Nicaragua. Responsable de censos
                             nacionales,
@@ -142,12 +162,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <i class="bi bi-graph-up-arrow fs-1 color-brand"></i>
-                        <h5 class="mt-3">+500 encuestas</h5>
+                        <h3 class="mt-3">+500 encuestas</h3>
                         <p class="small">Procesadas con eficiencia y seguridad.</p>
                     </div>
                     <div class="col-md-6">
                         <i class="bi bi-building fs-1 color-brand"></i>
-                        <h5 class="mt-3">Institución integrada</h5>
+                        <h3 class="mt-3">Institución integrada</h3>
                         <p class="small">INIDE en un sistema confiable.</p>
                     </div>
                 </div>
@@ -175,7 +195,7 @@
 
                 <!-- Contáctanos -->
                 <div class="col-md-4 mb-3 px-3">
-                    <h6 class="fw-bold fs-5">Contáctanos</h6>
+                    <h4 class="fw-bold fs-5">Contáctanos</h4>
                     <form id="contactForm" class="w-100">
                         <div class="mb-2">
                             <label for="email" class="form-label">Tu correo</label>
@@ -193,7 +213,7 @@
 
                 <!-- Institución + Ayuda -->
                 <div class="col-md-4 mb-3 px-3">
-                    <h6 class="fw-bold fs-5">Institución</h6>
+                    <h5 class="fw-bold fs-5">Institución</h5>
                     <p class="small mb-2">
                         <strong>INIDE</strong><br>
                         📍 Managua, Nicaragua<br>
@@ -201,7 +221,7 @@
                             class="text-white text-decoration-none">inide.gob.ni</a>
                     </p>
 
-                    <h6 class="fw-bold fs-5 mt-3">Ayuda</h6>
+                    <h5 class="fw-bold fs-5 mt-3">Ayuda</h5>
                     <ul class="list-unstyled small">
                         <li><a href="pages/FAQ.html" class="text-white text-decoration-none">
                                 <i class="bi bi-question-circle me-1"></i> Preguntas frecuentes

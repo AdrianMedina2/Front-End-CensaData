@@ -4,19 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CensaData | Sistema de Gestión y Análisis de Datos.</title>
+    <meta name="description"
+        content="Encuentra respuestas a las preguntas frecuentes sobre CensaData. Información clara sobre gestión y análisis de datos censales para el INIDE.">
+    <meta name="keywords"
+        content="CensaData, FAQ, preguntas frecuentes, INIDE, censos, encuestas, gestión de datos, análisis estadístico, Nicaragua">
+    <meta name="author" content="CensaData Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="CensaData | Preguntas Frecuentes">
+    <meta property="og:description"
+        content="Resuelve tus dudas sobre CensaData y el sistema de gestión de datos del INIDE.">
+    <meta property="og:image" content="https://censadata-inide.netlify.app/img/CensadataWhite.png">
+    <meta property="og:url" content="https://censadata-inide.netlify.app/pages/FAQ.html">
+    <meta property="og:type" content="website">
+
+    <title>CensaData | Preguntas Frecuentes</title>
     <link rel="icon" type="image/x-icon" href="../img/Censadata.ico">
-    <!-- Boostrap CSS desde CDN -->
+
+    <!-- Preconnect para optimizar carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap CSS desde CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Boostrap Icons -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Fuente Poppins desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Estilos Propios -->
+    <!-- Estilos propios -->
     <link href="../css/styles.css" rel="stylesheet">
 </head>
+
 
 <body>
     <!-- Navbar -->
@@ -38,8 +58,8 @@
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./acerca.html">Acerca de nosotros</a>
                     <a class="nav-link text-white mb-2 mb-lg-0 me-lg-3" href="./FAQ.html">Preguntas frecuentes</a>
                     <!-- Link para iniciar sesión, redirigirá a la página interna, ya hosteada -->
-                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3" href="https://censadata.vercel.app/login" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="nav-link text-white fw-bold mb-2 mb-lg-0 me-lg-3"
+                        href="https://censadata.vercel.app/login" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-box-arrow-up-right me-1"></i> Iniciar sesión
                     </a>
                 </div>
@@ -49,83 +69,90 @@
 
     <!-- Contenido principal -->
     <main class="container my-5">
+        <h1>Preguntas frecuentes</h1>
+        <p class="lead">Encuentra respuestas a las dudas más comunes sobre el sistema CensaData y su funcionamiento.</p>
         <!-- Caja de búsqueda -->
-        <div class="mb-4">
+        <div class="mb-4 mt-4">
             <input type="text" id="faqSearch" class="form-control form-control-lg"
-                placeholder="Escribe para filtrar preguntas...">
+                placeholder="Escribe para filtrar preguntas..." aria-label="Buscar preguntas frecuentes">
         </div>
 
         <!-- Preguntas frecuentes en acordeón -->
         <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="q1">
+                <h3 class="accordion-header" id="q1">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
                         ¿Cómo funciona CensaData?
                     </button>
-                </h2>
+                </h3>
                 <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        El sistema permite gestionar y analizar datos censales de manera eficiente y segura.
+                        El sistema permite gestionar y analizar datos censales de manera eficiente y segura mediante
+                        tecnologías adecuadas.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header" id="q2">
+                <h3 class="accordion-header" id="q2">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#a2">
                         ¿Quién puede acceder a los reportes?
                     </button>
-                </h2>
+                </h3>
                 <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        Los reportes están disponibles para investigadores y administradores autorizados.
+                        Los reportes están disponibles para el público y administradores, siendo estos últimos los que
+                        deciden cuales se hacen públicos.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header" id="q3">
+                <h3 class="accordion-header" id="q3">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#a3">
                         ¿Cómo se protege la información?
                     </button>
-                </h2>
+                </h3>
                 <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        Se aplican protocolos de seguridad y cifrado para garantizar la confidencialidad de los datos.
+                        Se aplican protocolos de seguridad y cifrado para garantizar la confidencialidad de los datos,
+                        asegurando que la información se mantenga segura y privada.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header" id="q4">
+                <h3 class="accordion-header" id="q4">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#a4">
                         ¿Qué tecnologías utiliza el sistema?
                     </button>
-                </h2>
+                </h3>
                 <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        Se emplean tecnologías modernas de frontend y backend, incluyendo Bootstrap, JavaScript y bases
-                        de datos SQL.
+                        Se emplean tecnologías modernas de frontend y backend, incluyendo Bootstrap, React y Django, con
+                        una capa de servicios centralizada.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header" id="q5">
+                <h3 class="accordion-header" id="q5">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#a5">
                         ¿Cómo puedo solicitar soporte técnico?
                     </button>
-                </h2>
+                </h3>
                 <div id="a5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        El soporte se solicita mediante el formulario de contacto en la página principal o vía correo
-                        institucional.
+                        Si se desea contactar con el soporte, puede hacerlo mediante el formulario situado en la página
+                        principal.
+                        <a href="../index.html" class="btn btn-link fw-bold ms-2">Ir…</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
